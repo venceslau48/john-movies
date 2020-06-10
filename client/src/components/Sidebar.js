@@ -49,10 +49,11 @@ const Burger = styled.button`
 const MainWrapper = styled.div`
     grid-column: sidebar-start/sidebar-end;
     grid-row: 1/-1;
+    transition: all 0.2s;
 
     @media ${props => props.theme.bp.smallest} {
-        display: ${props => (props.mobile ? "none" : null)};
-        grid-column: 1/3;
+        opacity: ${props => (props.mobile ? "0" : "1")};
+        width: ${props => (props.mobile ? "50%" : "100%")};
         z-index: 99;
         margin-top: 8.5rem;
     }
