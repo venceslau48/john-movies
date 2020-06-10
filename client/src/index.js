@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React from "react"
 import ReactDOM from "react-dom"
 import App from "./App"
 
@@ -20,14 +20,12 @@ import ScrollToTop from "./ScrollToTop"
 ReactDOM.render(
     <Provider store={store}>
         <ThemeProvider theme={theme}>
-            <Fragment>
-                <BrowserRouter>
-                    <ScrollToTop>
-                        <App />
-                    </ScrollToTop>
-                </BrowserRouter>
-                <GlobalStyle />
-            </Fragment>
+            <BrowserRouter>
+                <ScrollToTop>
+                    <App />
+                </ScrollToTop>
+            </BrowserRouter>
+            <GlobalStyle />
         </ThemeProvider>
     </Provider>,
     document.getElementById("root")
