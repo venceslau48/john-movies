@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"
-import styled from "styled-components"
-import StickyBox from "react-sticky-box"
-import { NavLink } from "react-router-dom"
-import { Icon } from "antd"
-import Logo from "./Logo"
-import { ReactComponent as LogoAttribuition } from "../images/logo-attribuition.svg"
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import StickyBox from "react-sticky-box";
+import { NavLink } from "react-router-dom";
+import { Icon } from "antd";
+import Logo from "./Logo";
+import { ReactComponent as LogoAttribuition } from "../images/logo-attribuition.svg";
 
-import { useSelector, useDispatch } from "react-redux"
-import { genres } from "../actions/genres"
+import { useSelector, useDispatch } from "react-redux";
+import { genres } from "../actions/genres";
 
 const NavbarMobile = styled.nav`
     display: none;
@@ -23,7 +23,7 @@ const NavbarMobile = styled.nav`
         background: var(--color-primary);
         z-index: 999;
     }
-`
+`;
 
 const Burger = styled.button`
     display: none;
@@ -44,7 +44,7 @@ const Burger = styled.button`
         transition: all 0.4s;
         outline: none;
     }
-`
+`;
 
 const MainWrapper = styled.div`
     grid-column: sidebar-start/sidebar-end;
@@ -57,7 +57,7 @@ const MainWrapper = styled.div`
         z-index: 99;
         margin-top: 8.5rem;
     }
-`
+`;
 
 const Container = styled.div`
     display: flex;
@@ -68,7 +68,7 @@ const Container = styled.div`
     height: 100%;
     min-height: 100vh;
     padding-bottom: 4rem;
-`
+`;
 
 const Titulo = styled.h2`
     font-weight: 700;
@@ -76,13 +76,13 @@ const Titulo = styled.h2`
     text-transform: uppercase;
     color: var(--color-typo);
     margin-top: 4rem;
-`
+`;
 
 const TipoWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-`
+`;
 
 const Tipo = styled(NavLink).attrs({ activeClassName: "active" })`
     font-size: 1.5rem;
@@ -98,11 +98,11 @@ const Tipo = styled(NavLink).attrs({ activeClassName: "active" })`
     &:not(:first-child) {
         margin-top: 1rem;
     }
-`
+`;
 
 const TipoIcon = styled(Icon)`
     margin-right: 10px;
-`
+`;
 
 const LogoMovieDB = styled(LogoAttribuition)`
     width: 100%;
@@ -113,19 +113,19 @@ const LogoMovieDB = styled(LogoAttribuition)`
     path {
         fill: #0d253f;
     }
-`
+`;
 
 const Sidebar = () => {
-    const _genres = useSelector(state => state.genresReducer.genres)
-    const dispatch = useDispatch()
-    const [mobile, setMobile] = useState(true)
+    const _genres = useSelector(state => state.genresReducer.genres);
+    const dispatch = useDispatch();
+    const [mobile, setMobile] = useState(true);
 
     useEffect(() => {
-        dispatch(genres())
-    }, [])
+        dispatch(genres());
+    }, []);
 
-    const [movies, setMovies] = useState(true)
-    const [series, setSeries] = useState(false)
+    const [movies, setMovies] = useState(true);
+    const [series, setSeries] = useState(false);
 
     return (
         <>
@@ -143,8 +143,8 @@ const Sidebar = () => {
                             <Tipo
                                 to="/movies"
                                 onClick={() => {
-                                    setMovies(true)
-                                    setSeries(false)
+                                    setMovies(true);
+                                    setSeries(false);
                                 }}
                             >
                                 <TipoIcon type="right" />
@@ -153,8 +153,8 @@ const Sidebar = () => {
                             <Tipo
                                 to="/series"
                                 onClick={() => {
-                                    setMovies(false)
-                                    setSeries(true)
+                                    setMovies(false);
+                                    setSeries(true);
                                 }}
                             >
                                 <TipoIcon type="right" />
@@ -163,8 +163,8 @@ const Sidebar = () => {
                             <Tipo
                                 to="/in-theaters/news"
                                 onClick={() => {
-                                    setMovies(false)
-                                    setSeries(false)
+                                    setMovies(false);
+                                    setSeries(false);
                                 }}
                             >
                                 <TipoIcon type="right" />
@@ -191,7 +191,10 @@ const Sidebar = () => {
                                 <Titulo>Genres</Titulo>
                                 <TipoWrapper>
                                     {_genres.map(genre => (
-                                        <Tipo to={`/movies/genres/${genre.name}/${genre.id}`} key={genre.id}>
+                                        <Tipo
+                                            to={`/movies/genres/${genre.name}/${genre.id}`}
+                                            key={genre.id}
+                                        >
                                             <TipoIcon type="right" />
                                             {genre.name}
                                         </Tipo>
@@ -215,7 +218,10 @@ const Sidebar = () => {
                                 <Titulo>Genres</Titulo>
                                 <TipoWrapper>
                                     {_genres.map(genre => (
-                                        <Tipo to={`/series/genres/${genre.name}/${genre.id}`} key={genre.id}>
+                                        <Tipo
+                                            to={`/series/genres/${genre.name}/${genre.id}`}
+                                            key={genre.id}
+                                        >
                                             <TipoIcon type="right" />
                                             {genre.name}
                                         </Tipo>
@@ -224,11 +230,14 @@ const Sidebar = () => {
                             </>
                         )}
                         <LogoMovieDB />
+                        <span style={{ marginTop: 20 }}>
+                            Copyright @ 2020 - John Vences
+                        </span>
                     </Container>
                 </StickyBox>
             </MainWrapper>
         </>
-    )
-}
+    );
+};
 
-export default Sidebar
+export default Sidebar;
