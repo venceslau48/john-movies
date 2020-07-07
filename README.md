@@ -7,4 +7,4 @@
 APP that shows movies and TV series, using The Movies Database's api.
 React, Styled Components, Node.JS and Redux were used.
 
-Developed by John Vences - copyright @ 2020
+Developed by [John Vences](https://github.com/venceslau48) - copyright @ 2020
